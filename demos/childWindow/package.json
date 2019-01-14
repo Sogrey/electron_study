@@ -1,0 +1,16 @@
+{
+  "name": "childwindow",
+  "version": "1.0.0",
+  "description": "子窗口练习",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dev": "electron . --debug"
+  },
+  "keywords": [
+    "子窗口"
+  ],
+  "author": "Sogrey",
+  "license": "MIT"
+}

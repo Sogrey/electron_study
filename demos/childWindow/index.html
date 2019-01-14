@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <!--  指定页面编码格式  -->
+    <meta charset="UTF-8">
+    <!--  指定页头信息 -->
+    <title>子窗口练习</title>
+    <script src="js-childWindow.js"></script>
+</head>
+
+<body>
+
+    <button onclick="onClick_OpenNewWindow()">打开子窗口</button>
+    <br>
+    <br>
+    <button onclick="onClick_OpenNewWindowUrl()">打开百度</button>
+    <br>
+    <br>
+    <button onclick="onClick_OpenWindow1()">打开子窗口（设置窗口标题和窗口属性）</button>
+    <br>
+    <br>
+    <button onclick="onClick_Focus()">获得焦点</button>
+    <br>
+    <br>
+    <button onclick="onClick_Blur()">失去焦点</button>
+    <br>
+    <br>
+    <button onclick="onClick_Close()">关闭子窗口</button>
+    <br>
+    <br>
+    <button onclick="onClick_PrintDialog()">打印对话框</button>
+    <br>
+    <br>
+    主窗口与子窗口交互
+    <br>
+    <br>
+    <button onclick="onClick_Message()">向子窗口发送消息</button>
+    <br>
+    <br>
+    <button onclick="onClick_Eval()">向子eval方法窗口发送消息</button>
+    <br>
+    <br>
+    <label id="label" style="font-size: large"></label>
+</body>
+
+</html>
