@@ -1,0 +1,19 @@
+{
+  "name": "filedialog",
+  "version": "1.0.0",
+  "description": "打开对话框练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "packager": "electron-packager ./ Dialog --win32 --out ./OutApp --electron-version 4.0.1 --overwrite --icon=./icon.ico"
+  },
+  "keywords": [
+    "对话框"
+  ],
+  "author": "Sogrey",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-packager": "^13.0.1"
+  }
+}

@@ -4,76 +4,86 @@ const dialog = remote.dialog;
 //或者
 // const {dialog} = require('electron')
 
-function onClick_OpenFile() {
-    const label = document.getElementById('label');
-    label.innerText = dialog.showOpenDialog({ properties: ['openFile'] })
-}
 
-function onClick_CustomOpenFile() {
+
+//消息提示
+function onClick_MessageBox() {
     const label = document.getElementById('label');
     var options = {};
-    options.title = '打开文件';
-    options.message = '打开我的文件';
-    options.buttonLabel = '选择';
-    //  Mac OSX 默认目录是桌面
-    options.defaultPath = '.';
-    options.properties = ['openFile'];
-    label.innerText = dialog.showOpenDialog(options)
+    options.title = '信息';
+    options.message = '这是一个信息提示框';
+    label.innerText= dialog.showMessageBox(options)
 }
 
-function onClick_FileType() {
-    const label = document.getElementById('label');
+//消息提示 - 设置图标
+function onClick_MessageBoxIcon() {
     var options = {};
-    options.title = '打开文件';
-    options.buttonLabel = '选择';
-    //  Mac OSX 默认目录是桌面
-    options.defaultPath = '.';
-    options.properties = ['openFile'];
-    options.filters = [
-        { name: '图像文件', extensions: ['jpg', 'png', 'gif'] },
-        { name: '视频文件', extensions: ['mkv', 'avi', 'mp4'] },
-        { name: '音频文件', extensions: ['mp3', 'wav'] },
-        { name: '所有文件', extensions: ['*'] }
-    ]
-    label.innerText = dialog.showOpenDialog(options)
+    options.title = '信息';
+    options.message = '这是一个信息提示框';
+    //  设置对话框的图标
+    options.icon = '../imgs/i.png';   
+    dialog.showMessageBox(options)
 }
 
-function onClick_OpenAndCreateDirectory() {
-    const label = document.getElementById('label');
+//消息提示 - 警告
+function onClick_WarningBox() {
     var options = {};
-    options.title = '打开目录';
-    //  createDirectory仅用于Mac OS 系统
-    options.properties = ['openDirectory', 'createDirectory'];
-    label.innerText = dialog.showOpenDialog(options)
+    options.title = '警告';
+    options.message = '这是一个警告提示框';
+   // 设置对话框类型
+    options.type = 'warning';
+    dialog.showMessageBox(options)
+}
+//消息提示 - 警告 - 图标，多按钮
+function onClick_WarningBoxIconAndMulBtns() {
+    var options = {};
+    options.title = '警告';
+    options.message = '这是一个警告提示框';
+    options.icon = '../imgs/warning.png';
+    options.type = 'warning';
+    options.buttons = ['按钮1','按钮2','按钮3','按钮4','按钮5']
+    dialog.showMessageBox(options)
 }
 
-function onClick_MultiSelection() {
-    const label = document.getElementById('label');
-    var options = {};
-    options.title = '选择多个文件和目录';
-    options.message = '选择多个文件和目录';
-
-    options.properties = ['openFile', 'multiSelections'];
-    if (process.platform === 'darwin') {
-        options.properties.push('openDirectory');
-    }
-    label.innerText = dialog.showOpenDialog(options)
+//消息提示 - 多按钮点击回调索引
+// function onClick_WarningBoxIconAndMulBtnsCallback() {
+//     var options = {};
+//     options.title = '警告';
+//     options.message = '这是一个警告提示框';
+//     options.icon = '../imgs/warning.png';
+//     options.type = 'warning';
+//     options.buttons = ['按钮1','按钮2','按钮3','按钮4','按钮5']
+//     //  获取单击按钮的索引，并将索引输出到控制台
+//     dialog.showMessageBox(options,(response) => {
+//         console.log('当前被单击的按钮索引是' + response);
+//         label.innerText='当前被单击的按钮索引是' + response
+//     })
+// }
+function onClick_WarningBoxIconAndMulBtnsCallback() {
+    // var options = {};
+    // options.title = '警告';
+    // options.message = '这是一个警告提示框';
+    // options.icon = '../imgs/warning.png';
+    // options.type = 'warning';
+    // options.buttons = ['按钮1','按钮2','按钮3','按钮4','按钮5']
+    //  获取单击按钮的索引，并将索引输出到控制台
+    dialog.showMessageBox({
+        title :'警告',
+        message: '这是一个警告提示框',
+        icon : '../imgs/warning.png',
+        type : 'warning',
+        buttons : ['按钮1','按钮2','按钮3','按钮4','按钮5']
+    },(response) => {
+        console.log('当前被单击的按钮索引是' + response);
+        label.innerText='当前被单击的按钮索引是' + response
+    })
 }
 
-function onClick_Callback() {
-    const label = document.getElementById('label');
+//消息提示 - error
+//通过 showErrorBox 方法可以非常容易地显示错误对话框，该方法只有两个参数，第一个参数表示标题，第二个参数表示内容
+function onClick_ErrorBox() {
     var options = {};
-    options.title = '选择多个文件和目录';
-    options.message = '选择多个文件和目录';
-
-    options.properties = ['openFile', 'multiSelections'];
-    if (process.platform === 'darwin') {
-        options.properties.push('openDirectory');
-    }
-    dialog.showOpenDialog(options, (filePaths) => {
-        for (var i = 0; i < filePaths.length; i++) {
-            label.innerText += filePaths[i] + '\r\n';
-        }
-
-    });
+    options.title = '错误';
+    options.content = '这是一个错误'
+    dialog.showErrorBox('错误', '这是一个错误');
 }
