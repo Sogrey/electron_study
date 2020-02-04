@@ -1,2 +1,24 @@
-/demos/dialog/node_modules
-/demos/first/node_modules
+# IntelliJ project files
+.idea/
+*.iml
+*.ipr
+*.iws
+out
+gem
+
+# VS Code project files
+.vscode/
+
+# MacOS files
+.DS_Store
+Thumbs.db
+
+# Node files
+node_modules/
+docs/
+
+#
+vuepress2pdf/files/*.html
+
+#
+/demos/*/node_modules
