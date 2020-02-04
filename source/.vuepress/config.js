@@ -111,9 +111,9 @@ module.exports = {
 };
 
 function genGuideSidebar(isZh) {
-  var resultD = getAllDirs('./source/'+(isZh?"zh":"en")+"/guide/",['.vuepress']);//
-  console.log(resultD);
-  console.log("=================================");
+  // var resultD = getAllDirs('./source/'+(isZh?"zh":"en")+"/guide/",['.vuepress']);//
+  // console.log(resultD);
+  // console.log("=================================");
   return [{
       title: isZh ? "快速入门" : "Getting Start",
       collapsable: false,
